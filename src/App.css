@@ -41,6 +41,7 @@ table, th, td {
   border-collapse: collapse;
   font-size: 36px;
 }
-th{
+td{
   width: 30px;
+  height: 40px;
 }
