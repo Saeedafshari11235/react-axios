@@ -1,25 +1,39 @@
 import logo from './logo.svg';
 import './App.css';
+import React, {Component} from 'react';
+import axios from 'axios';
 
-function App() {
-  return (
+const api = axios.create({
+  baseURL: 'https://iotserver-arha83.herokuapp.com/api/customers/'
+})
+
+class App extends Component {
+
+  state = {
+    courses:[]
+  }
+
+  constructor(){
+    super();
+    api.get('/').then(res =>{
+      this.setState({courses: res.data})
+    })
+  }
+
+
+  render(){return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <table>
+        <tr>{this.state.courses.map(course=><td key={course.id}>{course.pk}</td>)}</tr>
+        <tr>{this.state.courses.map(course=><td key={course.id}>{course.title}</td>)}</tr>
+        <tr>{this.state.courses.map(course=><td key={course.id}>{course.gateway}</td>)}</tr>
+        </table>
+        
+        
       </header>
     </div>
-  );
+  );}
 }
 
 export default App;
