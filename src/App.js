@@ -33,7 +33,7 @@ class App extends Component {
           <tr>
           <td>{course.pk}</td>
           <td>{course.title}</td>
-          <td>{course.gateways.join(",")}</td>
+          <td>{course.gateways.join()}</td>
           </tr>
         ))}
 </table>
