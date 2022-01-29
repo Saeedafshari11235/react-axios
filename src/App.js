@@ -24,10 +24,19 @@ class App extends Component {
     <div className="App">
       <header className="App-header">
         <table>
-        <tr><td>pk</td>{this.state.courses.map(course=><td key={course.id}>{course.pk}</td>)}</tr>
-        <tr><td>title</td>{this.state.courses.map(course=><td key={course.id}>{course.title}</td>)}</tr>
-        <tr><td>gateway</td>{this.state.courses.map(course=><td key={course.id}>{course.gateway}</td>)}</tr>
-        </table>
+        <tr>
+        <th>pk</th>
+        <th>title</th>
+        <th>gateway</th>
+        </tr>
+        {this.state.courses.map((course) => (
+          <tr>
+          <td>{course.pk}</td>
+          <td>{course.title}</td>
+          <td>{course.gateways.join(",")}</td>
+          </tr>
+        ))}
+</table>
         
         
       </header>
